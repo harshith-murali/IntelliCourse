@@ -44,7 +44,7 @@ export default function SignupScreen() {
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
           <Text style={styles.title}>Create Account</Text>
-          <Text style={styles.subtitle}>Join our learning community</Text>
+          <Text style={styles.subtitle}>Join IntelliCourse</Text>
         </View>
 
         <View style={styles.form}>

@@ -9,12 +9,13 @@ import {
   Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useAuth } from '../../hooks';
+import { useAuth, useTheme } from '../../hooks';
 import { Button } from '../../components';
 import { router } from 'expo-router';
 
 export default function ProfileScreen() {
   const { user, logout } = useAuth();
+  const { colors, isDark, toggleTheme } = useTheme();
 
   const handleLogout = () => {
     Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
@@ -31,7 +32,7 @@ export default function ProfileScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={[styles.container, { backgroundColor: colors.background }]} contentContainerStyle={styles.content}>
       {/* Back Button */}
       <TouchableOpacity
         onPress={() => router.back()}
@@ -41,10 +42,10 @@ export default function ProfileScreen() {
       </TouchableOpacity>
 
       {/* Profile Header */}
-      <View style={styles.profileHeader}>
+      <View style={[styles.profileHeader, { backgroundColor: colors.surface }]}>
         <Image source={{ uri: user?.avatar }} style={styles.avatar} />
-        <Text style={styles.name}>{user?.name}</Text>
-        <Text style={styles.email}>{user?.email}</Text>
+        <Text style={[styles.name, { color: colors.text }]}>{user?.name}</Text>
+        <Text style={[styles.email, { color: colors.textSecondary }]}>{user?.email}</Text>
         <View style={styles.roleBadge}>
           <Text style={styles.roleText}>
             {user?.role === 'instructor' ? 'Instructor' : 'Student'}
@@ -62,7 +63,16 @@ export default function ProfileScreen() {
 
       {/* Settings Sections */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Settings</Text>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>Settings</Text>
+
+        <TouchableOpacity style={[styles.settingItem, { backgroundColor: colors.surface }]} onPress={toggleTheme}>
+          <Ionicons name={isDark ? 'sunny' : 'moon'} size={20} color={colors.primary} />
+          <View style={styles.settingContent}>
+            <Text style={[styles.settingLabel, { color: colors.text }]}>Appearance</Text>
+            <Text style={[styles.settingDescription, { color: colors.textSecondary }]}>{isDark ? 'Dark Mode' : 'Light Mode'}</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color={colors.border} />
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.settingItem}>
           <Ionicons name="notifications" size={20} color="#3b82f6" />
@@ -94,7 +104,7 @@ export default function ProfileScreen() {
 
       {/* Account Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Account</Text>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>Account</Text>
 
         <TouchableOpacity style={styles.settingItem}>
           <Ionicons name="person" size={20} color="#3b82f6" />
@@ -126,7 +136,7 @@ export default function ProfileScreen() {
 
       {/* App Info */}
       <View style={styles.footer}>
-        <Text style={styles.footerText}>LMS App v1.0.0</Text>
+        <Text style={styles.footerText}>IntelliCourse v1.0.0</Text>
         <Text style={styles.footerSubtext}>Built with React Native & Expo</Text>
       </View>
     </ScrollView>
@@ -136,7 +146,6 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f9fafb',
   },
   content: {
     padding: 16,
@@ -154,7 +163,6 @@ const styles = StyleSheet.create({
   profileHeader: {
     alignItems: 'center',
     paddingVertical: 32,
-    backgroundColor: '#fff',
     borderRadius: 12,
     marginBottom: 24,
   },
@@ -207,9 +215,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 14,
     paddingHorizontal: 12,
-    backgroundColor: '#fff',
     borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
     gap: 12,
   },
   settingContent: {

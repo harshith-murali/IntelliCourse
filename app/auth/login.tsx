@@ -57,7 +57,7 @@ export default function LoginScreen() {
     >
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-          <Text style={styles.title}>Welcome to LMS</Text>
+          <Text style={styles.title}>Welcome to IntelliCourse</Text>
           <Text style={styles.subtitle}>Learn, Teach, Grow</Text>
         </View>
 

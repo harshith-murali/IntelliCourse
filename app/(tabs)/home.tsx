@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { View, ScrollView, Text, StyleSheet, Image } from 'react-native';
-import { useAuth, useCourse } from '../../hooks';
-import { CourseCard, LoadingSpinner, StatsCard } from '../../components';
+import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useAuth, useCourse, useTheme } from '../../hooks';
+import { CourseCard, LoadingSpinner, StatsCard, HeroSection } from '../../components';
 import { router } from 'expo-router';
 
 export default function HomeScreen() {
   const { user } = useAuth();
   const { courses, myCourses, isLoading, getCourses, getMyCourses } = useCourse();
+  const { colors, isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     loadData();
@@ -26,24 +28,36 @@ export default function HomeScreen() {
   const isStudent = user?.role === 'student';
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={[styles.container, { backgroundColor: colors.background }]} contentContainerStyle={styles.content}>
       {/* Header */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.greeting}>Welcome back, {user?.name}!</Text>
-          <Text style={styles.subtitle}>
+          <Text style={[styles.greeting, { color: colors.text }]}>Welcome back, {user?.name}!</Text>
+          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
             {isStudent
               ? `You have ${myCourses.length} active courses`
               : `You're teaching ${courses.length} courses`}
           </Text>
         </View>
-        <Image source={{ uri: user?.avatar }} style={styles.avatar} />
+        <View style={styles.headerActions}>
+          <TouchableOpacity onPress={toggleTheme} style={[styles.themeButton, { backgroundColor: colors.surface }]}>
+            <Ionicons name={isDark ? 'sunny' : 'moon'} size={20} color={colors.primary} />
+          </TouchableOpacity>
+          <Image source={{ uri: user?.avatar }} style={styles.avatar} />
+        </View>
       </View>
+
+      {/* Hero Section */}
+      <HeroSection
+        title={isStudent ? "Keep Learning!" : "Grow Your Teaching"}
+        subtitle={isStudent ? "Continue your journey to success" : "Inspire students worldwide"}
+        icon={isStudent ? 'book' : 'school'}
+      />
 
       {/* Stats for Students */}
       {isStudent && (
         <>
-          <Text style={styles.sectionTitle}>Your Progress</Text>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Your Progress</Text>
           <StatsCard
             icon="book"
             label="Courses Enrolled"
@@ -68,7 +82,7 @@ export default function HomeScreen() {
       {/* Recommended Courses */}
       {isStudent && (
         <>
-          <Text style={styles.sectionTitle}>Recommended Courses</Text>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Recommended Courses</Text>
           {courses.slice(0, 3).map((course) => (
             <CourseCard
               key={course.id}
@@ -87,7 +101,7 @@ export default function HomeScreen() {
       {/* Quick Stats for Instructors */}
       {!isStudent && (
         <>
-          <Text style={styles.sectionTitle}>Teaching Dashboard</Text>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Teaching Dashboard</Text>
           <StatsCard
             icon="book"
             label="Active Courses"
@@ -110,7 +124,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f9fafb',
   },
   content: {
     padding: 16,
@@ -122,15 +135,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 28,
   },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
   greeting: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#111',
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 14,
-    color: '#666',
+  },
+  themeButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   avatar: {
     width: 48,
@@ -140,7 +163,6 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#111',
     marginTop: 24,
     marginBottom: 16,
   },
