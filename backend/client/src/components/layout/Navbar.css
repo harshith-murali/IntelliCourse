@@ -1,0 +1,92 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: var(--space-12) 0;
+  background: var(--bg-color);
+  border-bottom: var(--border-thickness) solid var(--border-color);
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-48);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.logo-icon { color: var(--color-blue-50); }
+
+.nav-search {
+  position: relative;
+  width: 250px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-grey-50);
+}
+
+.nav-search input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border-radius: 100px;
+  border: 1px solid var(--border-color);
+  background: var(--color-grey-10);
+  font-size: 0.9rem;
+}
+
+/* Links & Actions Spacing - SIGNIFICANTLY INCREASED GAPS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Increased from 32 */
+}
+
+.nav-link {
+  font-weight: 700;
+  color: var(--color-blue-50);
+  font-size: 0.95rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* Gap between theme toggle and auth group */
+}
+
+.auth-group {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Gap between Login and Join Now */
+}
+
+.login-link {
+  font-weight: 800;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+/* Mobile */
+.mobile-menu-btn { display: none; }
+
+@media (max-width: 992px) {
+  .nav-search, .nav-links { display: none; }
+  .mobile-menu-btn { display: block; }
+}

@@ -1,0 +1,116 @@
+.course-card {
+  background: var(--card-bg);
+  border: var(--border-thickness) solid var(--color-grey-90);
+  border-radius: var(--border-radius-s);
+  overflow: hidden;
+  box-shadow: 4px 4px 0px var(--color-grey-90);
+  transition: all var(--timing-movement) var(--easing-movement);
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--color-blue-50);
+}
+
+.card-image {
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: var(--border-thickness) solid var(--color-grey-90);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-badge {
+  position: absolute;
+  top: var(--space-16);
+  left: var(--space-16);
+  background: var(--color-yellow-40);
+  color: var(--color-grey-90);
+  padding: var(--space-4) var(--space-16);
+  border-radius: var(--border-radius-s);
+  border: var(--border-thickness) solid var(--color-grey-90);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.card-content {
+  padding: var(--space-16);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.course-title {
+  font-size: 0.95rem !important;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.instructor {
+  font-size: 0.9rem;
+  color: var(--color-grey-60);
+}
+
+.course-metrics {
+  display: flex;
+  gap: var(--space-16);
+  margin-top: auto;
+  padding-top: var(--space-16);
+  color: var(--color-grey-70);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.star-icon {
+  color: var(--color-orange-50);
+  fill: var(--color-orange-50);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-24);
+  padding-top: var(--space-16);
+  border-top: 1px dashed var(--border-color);
+}
+
+.price-tag {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-blue-50);
+}
+
+.play-icon {
+  margin-right: var(--space-8);
+}
+
+[data-theme="dark"] .course-card {
+  border-color: var(--border-color);
+  box-shadow: 4px 4px 0px var(--border-color);
+}
+
+[data-theme="dark"] .course-card:hover {
+  box-shadow: 10px 10px 0px var(--color-blue-40);
+}

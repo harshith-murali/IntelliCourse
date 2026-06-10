@@ -1,0 +1,131 @@
+.instructor-dashboard {
+  padding-top: var(--space-64);
+  padding-bottom: var(--space-80);
+}
+
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-32);
+  margin-bottom: var(--space-64);
+}
+
+.inst-stat-card {
+  background: var(--card-bg);
+  padding: var(--space-32);
+  border-radius: var(--border-radius-m);
+  border: var(--border-thickness) solid var(--color-grey-90);
+  box-shadow: 6px 6px 0px var(--color-grey-90);
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.stat-val {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-val strong {
+  font-size: 2rem;
+}
+
+.stat-val span {
+  font-size: 0.9rem;
+  color: var(--color-grey-60);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.icon-blue { color: var(--color-blue-50); }
+.icon-green { color: var(--color-green-50); }
+
+/* Table Section */
+.courses-table-section {
+  background: var(--card-bg);
+  border: var(--border-thickness) solid var(--color-grey-90);
+  border-radius: var(--border-radius-m);
+  padding: var(--space-32);
+  box-shadow: 6px 6px 0px var(--color-grey-90);
+}
+
+.courses-table-wrapper {
+  overflow-x: auto;
+  margin-top: var(--space-24);
+}
+
+.courses-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.courses-table th {
+  padding: var(--space-16);
+  border-bottom: 2px solid var(--border-color);
+  font-weight: 800;
+  color: var(--color-grey-60);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.courses-table td {
+  padding: var(--space-24) var(--space-16);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.status-pill {
+  padding: var(--space-4) var(--space-16);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+}
+
+.status-pill.published {
+  background: var(--color-green-30);
+  color: var(--color-green-60);
+  border-color: var(--color-green-40);
+}
+
+.status-pill.draft {
+  background: var(--color-grey-20);
+  color: var(--color-grey-60);
+}
+
+.actions-cell {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.icon-btn {
+  background: transparent;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  color: var(--color-grey-70);
+  transition: all var(--timing-fade) var(--easing-fade);
+}
+
+.icon-btn:hover {
+  background: var(--color-grey-10);
+  color: var(--color-grey-90);
+  transform: translateY(-2px);
+}
+
+.icon-btn.delete:hover {
+  background: var(--color-red-10);
+  color: var(--color-red-60);
+  border-color: var(--color-red-20);
+}
+
+/* Dark Mode Extensions */
+[data-theme="dark"] .inst-stat-card,
+[data-theme="dark"] .courses-table-section {
+  border-color: var(--color-white);
+  box-shadow: 6px 6px 0px var(--color-white);
+}

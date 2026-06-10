@@ -1,0 +1,19 @@
+{
+  "name": "intellicourse-monorepo",
+  "version": "1.0.0",
+  "description": "IntelliCourse - LMS Monorepo (Backend + Mobile)",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "mobile"
+  ],
+  "scripts": {
+    "backend": "cd backend && node index.js",
+    "mobile": "cd mobile && npx expo start",
+    "dev": "concurrently \"npm run backend\" \"npm run mobile\"",
+    "install:all": "npm install && cd backend && npm install && cd ../mobile && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

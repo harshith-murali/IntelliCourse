@@ -1,0 +1,238 @@
+.landing-page {
+  padding-bottom: var(--space-80);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: var(--space-80) 0;
+  background-color: var(--color-pale-blue-40);
+  border-bottom: var(--border-thickness) solid var(--color-grey-90);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .hero-section {
+  background-color: var(--color-grey-90);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: var(--space-48);
+  position: relative;
+  z-index: 2;
+}
+
+.badge-wrapper {
+  margin-bottom: var(--space-24);
+}
+
+.hero-badge {
+  background: var(--color-blue-20);
+  color: var(--color-blue-60);
+  padding: var(--space-8) var(--space-16);
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  border: 1px solid var(--color-blue-30);
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  line-height: 1.05;
+  margin-bottom: var(--space-24);
+}
+
+.text-accent {
+  color: var(--color-blue-55);
+  position: relative;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-grey-70);
+  margin-bottom: var(--space-48);
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-16);
+}
+
+/* Hero Visuals / Shapes */
+.hero-visual {
+  position: relative;
+  height: 480px;
+}
+
+.shape {
+  position: absolute;
+  z-index: -1;
+  border: var(--border-thickness) solid var(--color-grey-90);
+}
+
+.box-1 {
+  width: 120px;
+  height: 120px;
+  background: var(--color-yellow-40);
+  top: 10%;
+  right: 15%;
+  transform: rotate(15deg);
+  border-radius: var(--border-radius-m);
+}
+
+.circle-1 {
+  width: 180px;
+  height: 180px;
+  background: var(--color-warm-blue-40);
+  border-radius: 50%;
+  bottom: 15%;
+  left: 10%;
+}
+
+.triangle-1 {
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 100px solid var(--color-green-40);
+  top: 40%;
+  left: 30%;
+  transform: rotate(-10deg);
+  border: none; /* Triangle trick uses borders, so we override */
+  position: relative;
+}
+
+.hero-stats-card {
+  position: absolute;
+  background: var(--card-bg);
+  padding: var(--space-16) var(--space-24);
+  border-radius: var(--border-radius-m);
+  border: var(--border-thickness) solid var(--color-grey-90);
+  box-shadow: 4px 4px 0px var(--color-grey-90);
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  z-index: 5;
+}
+
+.card-1 {
+  top: 25%;
+  left: 0;
+}
+
+.card-2 {
+  bottom: 20%;
+  right: 5%;
+}
+
+.card-icon {
+  background: var(--color-blue-50);
+  color: white;
+  padding: var(--space-8);
+  border-radius: var(--border-radius-s);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info strong {
+  font-size: 1.2rem;
+}
+
+.card-info span {
+  font-size: 0.8rem;
+  color: var(--color-grey-60);
+}
+
+/* Featured Section */
+.featured-section {
+  padding: var(--space-80) 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-48);
+}
+
+.section-title {
+  margin-bottom: var(--space-8);
+}
+
+.section-subtitle {
+  color: var(--color-grey-60);
+}
+
+
+/* Category Banner */
+.category-section {
+  padding: var(--space-48) 0;
+}
+
+.category-banner {
+  background: var(--color-green-50);
+  color: var(--color-white);
+  padding: var(--space-48) var(--space-64);
+  border-radius: var(--border-radius-l);
+  border: var(--border-thickness) solid var(--color-grey-90);
+  box-shadow: 8px 8px 0px var(--color-grey-90);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-48);
+}
+
+.banner-content h3 {
+  font-size: 2.25rem;
+  margin-bottom: var(--space-12);
+}
+
+.track-badges {
+  display: flex;
+  gap: var(--space-12);
+  margin-top: var(--space-24);
+}
+
+.track-badge {
+  padding: var(--space-8) var(--space-16);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+  .category-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-32);
+  }
+  .track-badges {
+    justify-content: center;
+  }
+}
